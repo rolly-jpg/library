@@ -1,23 +1,21 @@
 const myLibrary = [];
-addBookToLibrary('The Great Whale','A. Dawt', 234, false)
-addBookToLibrary('The Cloud','N. Roteer', 223, true)
 
-renderTable()
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+        this.id = crypto.randomUUID()
+    }
 
+    info() {
+        return `${this.title} by ${this.author}, ${this.pages} pages, read: ${this.read}`        
+    }
 
-function Book(title, author, pages, read) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.read = read
-  this.id = crypto.randomUUID()
-  this.info = function() {
-    `${this.title} by ${this.author}, ${this.pages} pages, read: ${this.read}`
-  }
-}
-
-Book.prototype.toggleReadStatus = function() {
-    this.read = !this.read
+    toggleReadStatus() {
+        this.read = !this.read
+    }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -63,6 +61,10 @@ function renderTable() {
     )
 }
 
+addBookToLibrary('The Great Whale','A. Dawt', 234, false)
+addBookToLibrary('The Cloud','N. Roteer', 223, true)
+
+renderTable()
 
 const form = document.getElementById('form')
 
